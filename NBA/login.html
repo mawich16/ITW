@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
+    <link href="../lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../lib/font-awesome/dist/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="myCSS.css" />
+    <title>Login</title>
+    <style>
+        body {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-container {
+            max-width: 400px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5 pt-5 login-container">
+        <div class="text-center pb-4"><img src="NBA_logoH.png" style="width: 300px;" alt="NBA logo"></div>
+        <div class="text-center justify-content-center text-dark rounded-5 d-flex justify-content-center align-items-center p-1" style="font-weight: bold;background-color: #19254b;">
+            <h2 class="text-center text-light">Login</h2>
+        </div>
+        <form onsubmit="login(event)">
+            <label for="username" class="text-dark">Username:</label>
+            <input type="text" id="username" name="username" class="form-control" required autocomplete="off">
+
+            <label for="password" class="text-dark">Password:</label>
+            <input type="password" id="password" name="password" class="form-control" required autocomplete="off">
+
+            <button type="submit" class="btn text-light btn-block mt-3" style="background-color: #19254b;">Login</button>
+        </form>
+
+        <p id="login-feedback" class="text-center mt-3"></p>
+        <p class="text-center text-dark">Don't have an account? <a class="text-dark" href="register.html">Register here</a></p>
+    </div>
+    <script>
+        function login(event) {
+            event.preventDefault();
+            var enteredUsername = document.getElementById('username').value;
+            var enteredPassword = document.getElementById('password').value;
+            
+            var storedUserData = localStorage.getItem(enteredUsername);
+
+            if (storedUserData) {
+                var userData = JSON.parse(storedUserData);
+
+                if (userData.password === enteredPassword) {
+                    alert('Login successful.');
+
+                    // Store the username in localStorage for future reference
+                    localStorage.setItem('username', enteredUsername);
+                    localStorage.setItem('loggedIn', true);
+                    window.location.href = "index.html";
+                    window.addEventListener('DOMContentLoaded', login);
+                } else {
+                    alert('Invalid credentials. Please try again.');
+                }
+            } else {
+                alert('User not found. Register first.');
+            }
+
+            return false;
+        }
+    </script>
+</body>
+</html>

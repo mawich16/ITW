@@ -1,0 +1,28 @@
+﻿body {
+    font-family: "Open Sans", Verdana, Geneva, Tahoma, sans-serif; margin:0; padding:0;
+}
+.top { width: 960px; height: 50px; margin:auto }
+.banner {
+    line-height: 600px;
+    color: white;
+    font-size: 60px;
+    text-align: center;
+    font-weight: 300;
+    margin: auto;
+    background-image: url('https://imageio.forbes.com/specials-images/imageserve/5d250a5c4c687b00085c326a/0x0.jpg?format=jpg&crop=929,523,x18,y2,safe&height=900&width=1600&fit=bounds');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.caixa {width:960px ; margin:auto}
+.contente { width:80%; min-height:400px; background-color: rosybrown; float: left;}
+.advertising {width:20%; min-height:400px; background-color: yellow; float:left;}
+.footer {width:960px; height:40px; margin:auto; background-color:greenyellow; clear:both; border-top: solid 1px #333; line-height:40px; vertical-align:middle;}
+
+ul { list-style-type: none; margin: 0; padding: 0; overflow: hidden; background-color: #333; }
+li { float: left; border-right: 1px solid #bbb; }
+    li:last-child { border-right: none; float: right; }
+    li a { display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none; }
+        li a:hover:not(.active) { background-color: #444; }
+        li a.active:hover { color: #444; }
+.active { background-color: #5CAF50; }

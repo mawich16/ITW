@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
+    <link href="../lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../lib/font-awesome/dist/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="myCSS.css" />
+    <title>Register</title>
+    <style>
+        body {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+        }
+
+        .register-container {
+            max-width: 400px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5 register-container">
+        <div class="text-center pb-4"><img src="NBA_logoH.png" style="width: 300px;" alt="NBA"></div>
+        <div class="text-center justify-content-center text-dark rounded-5 d-flex justify-content-center align-items-center p-1" style="font-weight: bold;background-color: #19254b;">
+            <h2 class="m-0">Make an Account</h2>
+        </div>
+        <form onsubmit="register()">
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="regUsername" class="text-dark">Username:</label>
+                    <input type="text" id="regUsername" name="regUsername" class="form-control" required>
+                </div>
+                
+                <div class="col-md-6">
+                    <label for="regPassword" class="text-dark">Password:</label>
+                    <input type="password" id="regPassword" name="regPassword" class="form-control" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="regEmail" class="text-dark">Email:</label>
+                    <input  id="regEmail" name="regEmail" class="form-control" required pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-block mt-3 text-bg-dark" style="background-color: #19254b;">Register</button>
+        </form>
+
+        <p id="register-feedback" class="text-center mt-3"></p>
+        <p class="text-center text-dark">Already have an account? <a class="text-dark" href="login.html">Login here</a></p>
+    </div>>
+
+    <script>
+        function register() {
+            var regUsername = document.getElementById('regUsername').value;
+            var regPassword = document.getElementById('regPassword').value;
+            var regEmail = document.getElementById('regEmail').value;
+
+            if (localStorage.getItem(regUsername) !== null) {
+                alert('Username already registered. Choose another username.');
+                return false;
+            }
+
+            // Store user data as an object
+            var userData = {
+                username: regUsername,
+                password: regPassword,
+                email: regEmail,
+            };
+
+            localStorage.setItem(regUsername, JSON.stringify(userData));
+
+            alert('Registration successful. Please login.');
+            window.location.href = 'login.html';
+            return false;
+        }
+    </script>
+</body>
+</html>

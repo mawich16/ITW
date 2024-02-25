@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>test file</title>
+    <script>
+        function calcula() {
+            var x = document.getElementById("op1");
+            var y = document.getElementById("op2");
+            console.log(parseFloat(x.value));
+            console.log(parseFloat(y.value));
+        }
+    </script>
+</head >
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <input id="op1" type="number" value="0" class="form-control" />
+            </div>
+            <div class="col-md-3">
+                <select id="operation" onchange="getOperation()" class="form-select">
+                    <option value="+" >Soma </option>
+                    <option value="-" >Subtração </option>
+                    <option value="*" >Multiplicação </option>
+                    <option value=":" >Divisão </option>
+                    <option value="%" >Resto da Divisão inteira </option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <input id="op2" type="number" value="0" class="form-control" />
+            </div>
+            <div class="col-md-3">
+                <input id="res" value="" class="form-control" />
+            </div>
+        </div>
+        <hr />
+        <div class="text-center">
+            <button onclick="calcula()" class="btn btn-primary">Calcula</button>
+        </div>
+    </div>
+    <script src="JavaScript.js"></script>
+</body>
+</html >

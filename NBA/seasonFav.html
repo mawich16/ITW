@@ -1,0 +1,107 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>ITW 2023/24 - NBA Arena Details</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
+    <link href="../lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../lib/font-awesome/dist/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="myCSS.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html" tabindex="NBA"><img src="NBA_logoH.png" height="24" /></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="arenas.html"><i class="fa fa-soccer-ball-o text-warning"></i> Arenas</a></li>
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="players.html"><i class="fa fa-user-o text-primary"></i> Players</a></li>
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="teams.html"><i class="fa fa-flag-o text-danger"></i> Teams</a></li>
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="states.html"><i class="fa fa-map-marker text-success"></i> States</a></li>
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="seasons.html"><i class="fa fa-bookmark-o text-info "></i> Seasons</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link dropdown-toggle" id="statisticsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-bar-chart text-primary"></i> Statistics
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="statisticsDropdown">
+                            <li><a class="dropdown-item" href="statistics.html">Players by Season and SeasonType</a></li>
+                            <li><a class="dropdown-item" href="statistics2.html">Top5 Players by Season</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item "><a class="nav-link" aria-current="page" href="favourites.html"><i class="fa fa-heart text-danger me-1"></i>Favourites</a>
+                </ul>
+            </div>
+            <div id="loginContainer">
+                <button id="loginBtn" class="btn btn-outline-secondary ms-auto" aria-label="login" onclick="window.location.href='login.html'">Login</button>
+            </div>
+            <div id="logoutContainer">
+                <button id="logoutBtn" class="btn btn-outline-secondary ms-auto" aria-label="logout" onclick="logout()">Bem-vindo! <span id="enteredUsername"></span> Logout</button>
+            </div>
+            <button id="toggleDarkMode" type="button" class="btn btn-outline-secondary ms-auto" aria-label="Toggle dark mode"><i id="darkModeIcon" class="fa fa-moon-o"></i><span id="darkModeText">  Dark Mode</span></button>
+        </div>
+    </nav>
+    <!-- Working Area -->
+    <div class="container">
+        <div class="row border-bottom py-2 mb-2">
+            <h2 class="col-6">Favourite Seasons</h2>
+            <div class="col-6" id="cover">
+            </div>
+        </div>
+        <table class="table table-striped table-sm small">
+            <thead class="table-secondary">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">SeasonType</th>
+                    <th scope="col"></th>
+                    <th scope="col">Number of Players</th>
+                    <th scope="col"></th>
+                    <th scope="col" class="text-right"></th>
+                </tr>
+            </thead>
+            <tbody id="table-favourites" class="text-center">
+            </tbody>
+        </table>
+    </div>
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        <img src="NBA_logoH.png" height="30" /> Loading data...
+                    </h5>
+                </div>
+                <div class="modal-body text-center">
+                    <i class="fa fa-spin fa-3x fa-refresh"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of Work Area -->
+    <nav class="navbar  fixed-bottom">
+        <div class="container small">
+            <div class="navbar-text">&copy;  Introdução as Tecnologias Web - 2023/24</div>
+            <div class="navbar-text">Made with <i class="fa fa-heart-o text-danger"></i>for U by Julia&Marta</div>
+            <div class="navbar-nav">
+                <div class="nav-item text-end"><a href="https://www.ua.pt" class="nav-link">Universidade de Aveiro</a></div>
+            </div>
+        </div>
+    </nav>
+    <script src="../lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../lib/knockout/dist/knockout-latest.min.js"></script>
+    <script src="../lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="seasonFav.js"></script>
+</body>
+</html>
